@@ -17,3 +17,8 @@ $ pig -x local -f pregunta.pig
         >>> Escriba su respuesta a partir de este punto <<<
 */
 
+table = LOAD './data.tsv' USING PigStorage('\t')
+        AS (f1:charArray, f2:BAG{t: TUPLE(p:charArray)}, f3:MAP[]);
+
+r = FOREACH table GENERATE p AS col1, f3;
+DUMP r;
