@@ -28,13 +28,4 @@ STORE wordcount INTO 'output' USING PigStorage(',');
 
 
 
-/*
-table = LOAD './data.tsv' USING PigStorage('\t')
-        AS (f1:charArray, f2:BAG{t: TUPLE(p:charArray)}, f3:MAP[]);
-
-grouped = GROUP r BY keyword;
-wordcount = FOREACH grouped GENERATE group, COUNT(r);
-
-
-*
 
