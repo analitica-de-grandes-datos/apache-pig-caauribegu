@@ -26,12 +26,6 @@ STORE wordcount INTO 'output' USING PigStorage(',');
 
 
 
-/*
-
-*/
-
-
-
 
 
 
