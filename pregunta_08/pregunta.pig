@@ -24,4 +24,55 @@ table = LOAD './data.tsv' USING PigStorage('\t')
 col = FOREACH table GENERATE FLATTEN(f2) AS letra, FLATTEN(KEYSET(f3)) AS tres;
 grouped = GROUP col by (letra,tres);
 final = FOREACH grouped GENERATE group, COUNT(col);
+
+/*
 STORE final INTO 'output' USING PigStorage(',');
+*/.
+..................................................................................................................................................................................................................................................................................................................................
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+........
+
+
+
+
+
+
+
+
+
+
+
+

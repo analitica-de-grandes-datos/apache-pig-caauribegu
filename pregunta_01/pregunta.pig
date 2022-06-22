@@ -24,6 +24,6 @@ lines = LOAD './data.tsv' USING PigStorage('\t')
 words = FOREACH lines GENERATE FLATTEN(TOKENIZE(letra)) AS word;
 grouped = GROUP words BY word;
 wordcount = FOREACH grouped GENERATE group, COUNT(words);
+
+
 STORE wordcount INTO 'output' USING PigStorage(',');
-
-
