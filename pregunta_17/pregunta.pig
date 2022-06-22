@@ -25,4 +25,4 @@ table = LOAD './data.csv' USING PigStorage(',')
 
 sub_table = FOREACH table GENERATE nombre, color;
 filter_table = FILTER sub_table BY (NOT(color matches 'blue')) or (NOT(color matches 'black'));
-STORE filter_table INTO 'output/';
+STORE filter_table INTO 'output/' USING PigStorage(',');

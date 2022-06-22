@@ -25,5 +25,5 @@ $ pig -x local -f pregunta.pig
 table = LOAD './data.csv' USING PigStorage(',')
   AS (num:int, nombre:charArray, apellido:charArray, fecha:charArray, color:charArray, num2:int);
 filter_table = FILTER table BY (nombre matches 'K.*') or (color matches 'blue');
-STORE filter_table INTO 'output/';
+STORE filter_table INTO 'output/'USING PigStorage(',');
 

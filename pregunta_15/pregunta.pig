@@ -26,7 +26,7 @@ table = LOAD './data.csv' USING PigStorage(',')
 
 sub_table = FOREACH table GENERATE nombre, color;
 filter_table = FILTER sub_table BY color == 'blue' AND STARTSWITH(nombre,'Z');
-STORE filter_table INTO 'output/';
+STORE filter_table INTO 'output/' USING PigStorage(',');
 
 
 
