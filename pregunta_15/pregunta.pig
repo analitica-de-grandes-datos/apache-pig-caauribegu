@@ -21,15 +21,17 @@ $ pig -x local -f pregunta.pig
 */
 
 
-table = LOAD './data.csv' USING PigStorage(',')
-  AS (num:int, nombre:charArray, apellido:charArray, fecha:charArray, color:charArray, num2:int);
+data_table = LOAD 'data.csv' USING PigStorage(',')
+    AS (
+        Id:int,
+        firstname:chararray,
+        Apellido:chararray,
+        Fecha:datetime,
+        color:chararray,
+        Cantidad:int
+    );
 
-sub_table = FOREACH table GENERATE nombre, color;
-filter_table = FILTER sub_table BY color == 'blue' AND STARTSWITH(nombre,'Z');
-STORE filter_table INTO 'output/' USING PigStorage(',');
-
-
-
-
-
-
+specific_columns = FOREACH data_table GENERATE firstname, color;
+filter_rows = FILTER specific_columns BY color == 'blue' AND STARTSWITH(firstname,'Z');
+format_output = FOREACH filter_rows GENERATE CONCAT(firstname,' ',color);
+STORE format_output INTO 'output' USING PigStorage(',');

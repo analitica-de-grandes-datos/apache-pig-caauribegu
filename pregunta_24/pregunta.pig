@@ -20,3 +20,7 @@ $ pig -x local -f pregunta.pig
 */
 
 
+*/
+A = LOAD './data.csv' using PigStorage(',') AS (id:int,  name:chararray, lastname:chararray,   date:chararray,  color:chararray, other:int);
+B = FOREACH A GENERATE SUBSTRING(date, 5, 7) AS yearBirthday;
+STORE B INTO 'output/' using PigStorage(',');
