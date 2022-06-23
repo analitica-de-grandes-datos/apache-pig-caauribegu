@@ -26,8 +26,5 @@ table = LOAD './data.csv' USING PigStorage(',')
   AS (num:int, nombre:charArray, apellido:charArray, fecha:charArray, color:charArray, num2:int);
 sub_table = FOREACH table GENERATE nombre, color;
 filter_table = FILTER sub_table BY (nombre matches 'K.*') or (color matches 'blue');
-DUMP filter_table;
-
-/*
 STORE filter_table INTO 'output/'USING PigStorage(',');
-*/
+
